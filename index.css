@@ -53,7 +53,7 @@ p {
 	text-align: center;
 }
 .form_box .login-title h1 {
-	color: #7a6beb;
+	color: #0079c3;
 	text-align: center;
 	margin-bottom: 40px;
 	text-transform: uppercase;
@@ -80,14 +80,14 @@ p {
 	top: 17px;
 	left: 24px;
 	font-size: 20px;
-	color: #7a6beb;
+	color: #0079c3;
 }
 .form_btn button {
 	margin: 0 auto;
 	display: inherit;
 	padding: 15px 50px;
 	border-radius: 30px;
-	background-image: linear-gradient(to right, #d871ba , #7a6beb);
+	background-image: linear-gradient(to right, #42bbe8 , #0079c3);
 	border: none;
 	color: #fff !important;
 	font-size: 16px;
@@ -95,6 +95,6 @@ p {
 	text-transform: uppercase;
 }
 .form_btn button:hover {
-	background-image: linear-gradient(to right, #7a6beb, #d871ba);
+	background-image: linear-gradient(to right, #0079c3, #42bbe8);
 	color: #fff !important;
 }
