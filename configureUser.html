@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<script>
+    function readSessionStorage() {
+        var sessionStorages = sessionStorage.getItem("username");
+        if (!sessionStorages) {
+            alert("Please sign in first !");
+            window.location.href = "index.html?name=DownloadCentre"
+        }
+
+    }
+    readSessionStorage()
+</script>
+<html lang="en" style=" background: #F7F9FC;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lansitec|LoRa</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" />
+    <script src="./jquery.js"></script>
+    <script src="./vue.js"></script>
+    <script>Vue.config.productionTip = false</script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./element.js"></script>
+    <link rel="stylesheet" href="./element.css">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .cell,
+    .avatar-uploader {
+        padding-left: 36px !important;
+    }
+
+    .el-button--danger:focus,
+    .el-button--danger:hover {
+        /* background: #f78989;
+            border-color: #f78989;
+            color: #FFF; */
+    }
+
+    .el-button--danger {
+        /* color: #FFF; */
+        /* background-color: #F56C6C; */
+        /* border-color: #F56C6C; */
+    }
+
+    .el-button {
+        border: 0;
+    }
+</style>
+
+<body>
+    <div id="app" class="type_area" style="width: 100%; height: 100%; background: #F7F9FC;">
+        <div class="centre_box" style="width: 841px; margin: 0 auto;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 20px 0px #D8D8D8; text-align: left;">
+            <table style="margin-top: 80px; border-bottom: 4px solid #0079C3;padding-left: 36px;margin-bottom: 10px;">
+                <tr style="height: 65px;">
+                    <th style="width: 394px;">NAME</th>
+                    <th style="width: 145px;">TYPE</th>
+                    <th style="width: 160px;">DATE</th>
+                    <th style="width: 100px;">FILE</th>
+                </tr>
+            </table>
+            <!-- <el-upload style=" float: left; height: 40px; line-height: 40px;padding-right: 20px;" class="avatar-uploader" action="http://iot.lansitec.com:14211/user/upload" :show-file-list="false"
+                :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+                
+                <el-form-item label="文件类型：">
+                    <el-select v-model="filetype">
+                        <el-option v-for="item in fileTypeList" :key="item.index" :label="item.value"
+                            :value="item.index">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <i class="el-icon-plus avatar-uploader-icon">添加文件</i>
+            </el-upload> -->
+
+            <el-button @click.native="uploadVisible = true" style="margin-left: 20px;">添加文件</el-button>
+            <el-button @click.native="addVisible = true">添加用户</el-button>
+            <el-button @click.native="configVisible = true">编辑用户</el-button>
+            <el-table :data="tableData" stripe style="width: 100%;text-align: center;">
+                <el-table-column prop="filename" label="FIRMWARE" width="394">
+                </el-table-column>
+                <el-table-column prop="filetype" label="" width="145">
+                </el-table-column>
+                <el-table-column prop="createtime" label="" width="160">
+                </el-table-column>
+                <el-table-column label="">
+                    <template slot-scope="scope">
+                        <el-button size="medium" @click="deleteFile(scope.$index, scope.row)"><img
+                                src="./img/delete.png" style="width: 24px; height: 24px;" alt=""></el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+
+            <el-dialog title="上传文件" :visible.sync="uploadVisible" :append-to-body="true">
+                <el-form :model="uploadConfig" ref="uploadConfig" label-width="100px">
+                    <el-form-item label="文件类型：">
+                        <el-select v-model="filetype">
+                            <el-option v-for="item in fileTypeList" :key="item.index" :label="item.value"
+                                :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="选择文件">
+                        <el-input v-model="file" name="inputFile" type="file"></el-input>
+                    </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <el-button @click.native="uploadVisible = false">取消</el-button>
+                    <el-button type="primary" @click.native="uploadFile">确定</el-button>
+                </div>
+            </el-dialog>
+
+
+
+            <el-dialog title="添加用户" :visible.sync="addVisible" :append-to-body="true">
+                <el-form :model="addUser" ref="addUser" label-width="100px">
+                    <el-form-item label="用户名：">
+                        <el-input v-model="addUser.username"></el-input>
+                    </el-form-item>
+                    <el-form-item label="密码：">
+                        <el-input v-model="addUser.password"></el-input>
+                    </el-form-item>
+                    <el-form-item label="权限：" poro="userType">
+                        <el-select v-model="addUser.role">
+                            <el-option v-for="item in userType" :key="item.index" :label="item.value"
+                                :value="item.index">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="文件：">
+                        <!--修改显示动态人名-->
+                        <el-checkbox-group v-model="userConfigFileName">
+                            <el-checkbox v-for="item in tableData" :label="item.filename" :value="item.filename"
+                                :key="item.id">
+                                {{item.filename}}
+                            </el-checkbox><br>
+                        </el-checkbox-group>
+                    </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <el-button @click.native="addVisible = false">取消</el-button>
+                    <el-button type="primary" @click.native="addUserSubmit">确定</el-button>
+                </div>
+            </el-dialog>
+
+            <el-dialog title="编辑用户" :visible.sync="configVisible" :append-to-body="true">
+                <el-form :model="userConfig" ref="userConfig" label-width="100px">
+                    <el-form-item label="用户名：">
+
+                        <el-select v-model="userConfig.id" @change="optionUser($event)" placeholder="请选择用户">
+                            <el-option v-for="item in allUser" :key="item.index" :label="item.username"
+                                :value="item.id">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="重置密码：">
+                        <el-input v-model="userConfig.password"></el-input>
+                    </el-form-item>
+                    <el-form-item label="文件：">
+                        <el-checkbox-group v-model="userConfigFileName">
+                            <el-checkbox v-for="item in tableData" :label="item.filename" :value="item.filename"
+                                :key="item.id">
+                                {{item.filename}}
+                            </el-checkbox><br>
+                        </el-checkbox-group>
+                    </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <el-button @click.native="configVisible = false">取消</el-button>
+                    <el-button type="primary" @click.native="editUserSubmit">确定</el-button>
+                </div>
+            </el-dialog>
+
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: '#app',
+
+        components: { app },
+        data: function () {
+            return {
+                imageUrl: '',
+                filePath: 'http://iot.lansitec.com:14211/user/upload',
+                tableData: [],
+                allUser: [],
+                addVisible: false,
+                uploadVisible: false,
+                configVisible: false,
+                userConfigFileName: [],
+                uploadConfig: {},
+                filetype: '',
+                file: '',
+                userConfig: {
+                    id: "",
+                    username: '',
+                    password: '',
+                },
+                addUser: {
+                    username: "",
+                    password: '',
+                    role: '',
+                },
+
+                userType: [
+                    {
+                        index: 1,
+                        value: "管理员"
+                    },
+                    {
+                        index: 2,
+                        value: "普通用户"
+                    }
+                ],
+
+                fileTypeList: [
+                    {
+                        index: 1,
+                        value: "Firmware"
+                    },
+                    {
+                        index: 2,
+                        value: "Manual"
+                    },
+                    {
+                        index: 3,
+                        value: "Datasheet"
+                    }
+                ],
+            }
+        },
+        methods: {
+            uploadFile() {
+                let file = document.getElementsByName('inputFile')[0].files[0];
+
+                let formData = new FormData();
+                formData.append("file", file, file.name);
+                formData.append("filetype", this.filetype);
+                const config = {
+                    headers: { "Content-Type": "multipart/form-data;boundary=" + new Date().getTime() }
+                };
+                let that = this;
+                axios
+                    .post("http://iot.lansitec.com:14211/user/upload", formData, config)
+                    .then(function (data) {
+                        if (data.data.code == '1001') {
+                            that.filetype = '',
+                                that.uploadVisible = false,
+                                that.$message({
+                                    message: data.data.msg,
+                                    type: 'success'
+                                });
+                            that.getAllFile()
+                        } else {
+                            that.$message({
+                                message: data.data.msg
+                            });
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+
+            optionUser(changeUser) {
+                this.userConfigFileName = []
+                for (let changeUserLength = 0; changeUserLength < this.allUser.length; changeUserLength++) {
+                    if (changeUser == this.allUser[changeUserLength].id) {
+                        this.userConfig.username = this.allUser[changeUserLength].username
+                        this.userConfigFileName = this.allUser[changeUserLength].downloads.split(",")
+                    }
+                }
+            },
+
+            addUserSubmit() {
+                var that = this;
+                axios
+                    .post("http://iot.lansitec.com:14211/user", {
+                        downloads: that.userConfigFileName.join(','),
+                        username: that.addUser.username,
+                        password: that.addUser.password,
+                        email: that.addUser.email,
+                        phoneNumber: that.addUser.phoneNumber,
+                        role: that.addUser.role,
+                    })
+                    .then(function (data) {
+                        if (data.data.code == '1001') {
+                                that.userConfigFileName = [],
+                                that.addUser.username = '',
+                                that.addUser.password = '',
+                                that.addUser.email = '',
+                                that.addUser.phoneNumber = '',
+                                that.addUser.role = '',
+                                that.addVisible = false,
+                                that.$message({
+                                    message: data.data.msg,
+                                    type: 'success'
+                                });
+                                that.getAllUser()
+                        } else {
+                            that.$message({
+                                message: data.data.msg
+                            });
+                        }
+                    })
+                    .catch(function (response) { });
+            },
+
+            editUserSubmit() {
+                var that = this;
+                axios
+                    .put("http://iot.lansitec.com:14211/user", {
+                        downloads: that.userConfigFileName.join(','),
+                        id: that.userConfig.id,
+                        username: that.userConfig.username,
+                        password: that.userConfig.password,
+                    })
+                    .then(function (data) {
+                        if (data.data.code == '1001') {
+                            that.userConfigFileName = [],
+                                that.userConfig.id = '',
+                                that.userConfig.username = '',
+                                that.userConfig.password = '',
+                                that.configVisible = false,
+                                that.$message({
+                                    message: data.data.msg,
+                                    type: 'success'
+                                });
+                        } else {
+                            that.$message({
+                                message: data.data.msg
+                            });
+                        }
+                    })
+                    .catch(function (response) { });
+            },
+
+            handleAvatarSuccess(res, file) {
+                this.imageUrl = URL.createObjectURL(file.raw);
+            },
+            beforeAvatarUpload(file) {
+                const isLt2M = file.size / 1024 / 1024 < 100;
+                if (!isLt2M) {
+                    this.$message.error('上传头像图片大小不能超过 100MB!');
+                }
+                return isLt2M;
+            },
+            picSuccess(response) {
+                console.log(response)
+            },
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            },
+            getAllFile() {
+                var that = this;
+                axios
+                    .get("http://iot.lansitec.com:14211/user/allFile", {
+                    })
+                    .then(function (data) {
+                        if (data.data.code != '1001') {
+                            that.$message({
+                                message: data.data.msg
+                            });
+                        } else {
+                            that.tableData = data.data.data
+                        }
+                    })
+                    .catch(function (response) { });
+            },
+
+            deleteFile(index, rows) {
+                console.log(index, rows)
+                var that = this;
+                axios
+                    .delete("http://iot.lansitec.com:14211/user/deleteFile/" + rows.filename, {
+                        fileName: rows.filename
+                    })
+                    .then(function (data) {
+                        console.log(data.data)
+                        if (data.data.code != "1001") {
+                            that.$message({
+                                message: data.data.msg,
+                                type: 'error'
+                            });
+                        } else {
+                            that.$message({
+                                message: data.data.msg,
+                                type: 'success'
+                            });
+                            that.getAllFile()
+                        }
+                    })
+                    .catch(function (response) { });
+            },
+
+            getAllUser() {
+                var that = this;
+                axios
+                    .get("http://iot.lansitec.com:14211/user", {
+			params: { 
+                            count: '100'
+                        }
+                    })
+                    .then(function (data) {
+                        console.log(data.data.code)
+                        if (data.data.code != "1001") {
+                            that.$message({
+                                message: data.data.msg,
+                                type: 'error'
+                            });
+                        } else {
+                            that.allUser = data.data.data
+                        }
+                    })
+                    .catch(function (response) { });
+            }
+        },
+        created() {
+            this.getAllFile()
+            this.tableData.forEach(item => {
+                let key = item.index
+                this.$set(this.tableData, key, [])
+            })
+            this.getAllUser()
+        }
+    })
+
+</script>

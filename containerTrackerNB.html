@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <link rel="shortcut icon" href="./img/favicon.ico" />
+    <title>Container Tracker NB</title>
+    <link rel="stylesheet" href="./public.css">
+    <script src="./jquery.js"></script>
+    <script>
+        (function readSessionStorage() {
+            var sessionStorages = sessionStorage.getItem("username");
+            if (!sessionStorages) {
+                alert("Please sign in first !");
+                window.location.href = "index.html?name=payload"
+            }
+        })()
+        function liMouseOver(liVale) {
+            let menuOver = document.getElementById(liVale)
+            menuOver.style.opacity = "1";
+            menuOver.style.height = '313px'
+            menuOver.style.visibility = 'visible'
+        }
+
+        function liMouseOut(liVale) {
+            let menuOut = document.getElementById(liVale)
+            menuOut.style.visibility = 'hidden'
+            menuOut.style.height = '0'
+            menuOut.style.opacity = "0";
+        }
+    </script>
+</head>
+
+<body>
+    <header id="headerBox">
+        <div class="logoBox">
+            <a href="https://www.lansitec.com">
+                <img src="https://www.lansitec.com/img/LOGO@2x.png" alt="lansitec" style="width: 199px;height: 27px;">
+            </a>
+        </div>
+        <ul class="header">
+            <li class="headerLi" id="solutionsLevel" onmouseover="liMouseOver('solutionsMenu')"
+                onmouseout="liMouseOut('solutionsMenu')"><a href="https://www.lansitec.com/Solutions.html">SOLUTION</a>
+                <hr>
+                <div class="secondLevel" id="solutionsMenu">
+                    <div class="secondLevelBody">
+                        <a class="picturePresentation" href="https://www.lansitec.com/Solutions/Project-Procedure.html">
+                            <img src="https://www.lansitec.com/img/projectProcedure.jpg" alt="project procedure">
+                            <p>Project Procedure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>></p>
+                        </a>
+                        <div class="secondLevelTitle">
+                            <h4>•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRACKING SOLUTIONS</h4>
+                            <a href="https://www.lansitec.com/Solutions/B-Mobile-Solution.html">B-Mobile®
+                                Tracking<i>>></i></a>
+                            <a href="https://www.lansitec.com/Solutions/B-Fixed-Solution.html">B-Fixed®
+                                Tracking<i>>></i></a>
+                            <a href="https://www.lansitec.com/Solutions/Indoor&Outdoor-Tracking.html">Indoor &
+                                Outdoor<i>>></i></a>
+                            <a href="https://www.lansitec.com/Solutions/Contact-Tracing.html">Contact
+                                Tracing<i>>></i></a>
+                            <a href="https://www.lansitec.com/Solutions/Potential&Confirmed-Patient-Tracking.html">Patient
+                                Tracking<i>>></i></a>
+                        </div>
+                        <div class="secondLevelTitle">
+                            <h4>•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;USE CASES</h4>
+                            <a href="https://www.lansitec.com/Solutions/Chemical-Industry.html">Chemical
+                                Industry<i>>></i></a>
+                            <a href="https://www.lansitec.com/Solutions/Construction-Field.html">Construction
+                                Field<i>>></i></a>
+                            <a href="https://www.lansitec.com/Solutions/Public-Facilities.html">Public
+                                Facilities<i>>></i></a>
+                            <a href="https://www.lansitec.com/Solutions/Asset-Tracking.html">Asset Tracking<i>>></i></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="headerLi" id="productLevel" onmouseover="liMouseOver('productMenu')"
+                onmouseout="liMouseOut('productMenu')"><a href="https://www.lansitec.com/Product.html">PRODUCT &
+                    SERVICE</a>
+                <hr>
+                <div class="secondLevel" id="productMenu">
+                    <div class="secondLevelBodyMax">
+                        <div class="secondLevelTitle">
+                            <h4>•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRACKER</h4>
+                            <a href="https://www.lansitec.com/Products/Lansitec-badge.html">Lansitec Badge<i>>></i></a>
+                            <a href="https://www.lansitec.com/Products/Contact-Tracing-Badge.html">Contact Tracing
+                                Badge<i>>></i></a>
+                            <a href="https://www.lansitec.com/Products/Outdoor-Asset-Tracker.html">Outdoor Asset
+                                Tracker<i>>></i></a>
+                        </div>
+                        <div class="secondLevelTitle">
+                            <h4>•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GATEWAY</h4>
+                            <a href="https://www.lansitec.com/Products/Indoor-Bluetooth-Gateway.html">Indoor Bluetooth
+                                Gateway<i>>></i></a>
+                            <a href="https://www.lansitec.com/Products/Compact-Bluetooth-Gateway.html">Compact Bluetooth
+                                Gateway<i>>></i></a>
+                            <a href="https://www.lansitec.com/Products/Solar-Bluetooth-Gateway.html">Solar Bluetooth
+                                Gateway<i>>></i></a>
+                            <a href="https://www.lansitec.com/Products/Macro-Bluetooth-Gateway.html">Macro Bluetooth
+                                Gateway<i>>></i></a>
+                        </div>
+                        <div class="secondLevelTitle">
+                            <h4>•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEACON</h4>
+                            <a href="https://www.lansitec.com/Products/Bluetooth-Beacon.html">Bluetooth
+                                Beacon<i>>></i></a>
+                            <a href="https://www.lansitec.com/Products/i3-Portable-Label.html">i3 Portable
+                                Label<i>>></i></a>
+                            <a href="https://www.lansitec.com/Products/i4-Asset-Management-Label.html">i4 Asset
+                                Management Label<i>>></i></a>
+                            <a href="https://www.lansitec.com/Products/Badge-Bluetooth-Beacon.html">Badge
+                                Beacon<i>>></i></a>
+                        </div>
+                        <div class="secondLevelTitle">
+                            <h4>•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SENSOR</h4>
+                            <a href="https://www.lansitec.com/Products/LoRa-Temperature&Humidity-Sensor.html">Temperature
+                                & Humidity
+                                Sensor&nbsp;&nbsp;&nbsp;&nbsp;>></a>
+                            <a href="https://www.lansitec.com/Products/LoRa-Precision-Platinum-Sensor.html">LoRa
+                                Precision Platinum
+                                Seonsor&nbsp;&nbsp;>></a>
+                            <h4 class="secondLevelTitleLast">•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SERVICE</h4>
+                            <a href="https://www.lansitec.com/Products/Tracking-Engine.html">Tracking
+                                Engine<i>>></i></a>
+                            <a href="https://www.lansitec.com/Products/Web-Service.html">Web Service<i>>></i></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="headerLi" id="companyLevel" onmouseover="liMouseOver('companyMenu')"
+                onmouseout="liMouseOut('companyMenu')"><a href="https://www.lansitec.com/Company.html">COMPANY</a>
+                <hr>
+                <div class="secondLevel" id="companyMenu">
+                    <div class="secondLevelBody">
+                        <a class="picturePresentation" href="https://www.lansitec.com/Company/About-Us.html">
+                            <img src="https://www.lansitec.com/img/logoBackground.jpg" alt="lansitec">
+                            <p>About Lansitec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>></p>
+                        </a>
+                        <div class="secondLevelImg">
+                            <a href="https://www.lansitec.com/Company/About-Us.html"><img
+                                    src="https://www.lansitec.com/img/aboutUs.jpg" alt="About Us">About
+                                Us<i>>></i></a>
+                            <a href="https://www.lansitec.com/Company/Our-Clients.html"><img
+                                    src="https://www.lansitec.com/img/ourClients.jpg" alt="Our Clients">Our
+                                Clients<i>>></i></a>
+                            <a href="https://www.lansitec.com/Company/Contact-Us.html"><img
+                                    src="https://www.lansitec.com/img/contactUs.jpg" alt="Contact Us">Contact
+                                Us<i>>></i></a>
+                        </div>
+                        <div class="secondLevelImg">
+                            <a href="https://www.lansitec.com/Company/Qualifications.html"><img
+                                    src="https://www.lansitec.com/img/qualifications.jpg"
+                                    alt="Qualifications">Qualifications<i>>></i></a>
+                            <a href="https://www.lansitec.com/Company/Join-Us.html"><img
+                                    src="https://www.lansitec.com/img/joinUs.jpg" alt="Join Us">Join
+                                Us<i>>></i></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="headerLi" id="resourcesLevel" onmouseover="liMouseOver('resourcesMenu')"
+                onmouseout="liMouseOut('resourcesMenu')"><a href="https://www.lansitec.com/Resources.html">RESOURCES</a>
+                <hr>
+                <div class="secondLevel" id="resourcesMenu">
+                    <div class="secondLevelBody">
+                        <a class="picturePresentation"
+                            href="http://iot.lansitec.com:8081/download/index.html?name=DownloadCentre" target="_blank">
+                            <img src="https://www.lansitec.com/img/downloadCentre.jpg" alt="Download Centre">
+                            <p>Download Centre&nbsp;&nbsp;&nbsp;&nbsp;>></p>
+                        </a>
+                        <div class="secondLevelTitle">
+                            <a href="http://iot.lansitec.com:8081/download/index.html?name=DownloadCentre"
+                                target="_blank">Download Centre<i>>></i></a>
+                            <a href="http://iot.lansitec.com:8081/download/index.html?name=Gateway"
+                                target="_blank">Gateway Payload
+                                Decoder<i>>></i></a>
+                            <a href="http://iot.lansitec.com:8081/download/index.html?name=tracker"
+                                target="_blank">Tracker Payload
+                                Decoder<i>>></i></a>
+                            <a href="http://iot.lansitec.com:8081/download/index.html?name=payload"
+                                target="_blank">Contact Tracing
+                                Badge Decoder<i class="iRight">>></i></a>
+                            <a href="https://www.lansitec.com/Resource/Goods-Return-Form.html">Goods Return Form<i>>></i></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li><a href="https://www.lansitec.com/Blog.html" target="_blank">BLOG</a>
+                <hr>
+            </li>
+            <li><a href="http://www.lansitec.com:4567/" target="_blank">FORUM</a>
+                <hr>
+            </li>
+            <li><a href="https://www.lansitec.com/Company/Contact-Us.html">CONTACT US</a></li>
+        </ul>
+    </header>
+
+    <div class="detail">
+        <div class="detailBody">
+            <h1>NB IoT Container Tracker BADGE DECODER</h1>
+            <p>
+                Applicable Products:<br>
+                • NB-IoT and CAT-M Indoor&OutdoorContainer Tracker
+            </p>
+        </div>
+    </div>
+
+    <div class="solutionTitle">
+        <div class="titleBarText">
+            <div class="lefthr"></div>
+            <h1>UPLINK MESSAGE</h1>
+            <div class="righthr"></div>
+        </div>
+    </div>
+
+    <div class="uplink">
+        <div class="content">
+            <h1>Container Tracker NB</h1>
+            <p class="payload">Payload</p>
+            <input type="text" id="payloadVal">
+            <button id="search" onclick="uplinkMessageSearch()">Search</button>
+            <div>
+                <p class="payload">Data</p>
+                <textarea id="uplinkMessage"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="solutionTitle">
+        <div class="titleBarText">
+            <div class="lefthr"></div>
+            <h1>DOWNLINK MESSAGE</h1>
+            <div class="righthr"></div>
+        </div>
+    </div>
+
+    <div class="downlink">
+
+        <div class="loraContant">
+            <h1 class="secondTitle">LoRa Configuration</h1>
+            <div class="secondLeft">
+                <div>
+                    <p class="powerTitle">URL length</p>
+                    <input type="text" id="adrVal" value="25">
+                </div>             
+            </div>
+
+            <div class="secondRight">
+                <div>
+                    <p class="dr">URL</p>
+                    <input type="text" id="powerVal" value="https://test.lansitec.com">
+                </div>
+            </div>
+            <p id="tips">* 3~100 (Decimal)</p>
+            <button id="searchConfig" onclick="urlConfigurationSearch()">Search</button>
+            <div>
+                <p class="payload">Data</p>
+                <textarea id="loraConfiguration"></textarea>
+            </div>
+        </div>
+
+        <div class="trackerContent">
+            <h1 class="secondTitle">Tracker Configuration</h1>
+
+            <div>
+                <p class="trackerTitle">GNSSEN</p>
+                <select name="CommandVal" id="gnssenVal">
+                    <option value="0">0: Disable</option>
+                    <option value="1" selected='selected'>1: Enable</option>
+                </select>
+            </div>
+
+            <div>
+                <p class="trackerTitle">POSMODE</p>
+                <select name="CommandVal" id="posmodeVal">
+                    <option value="0">0: Period mode</option>
+                    <option value="1" selected='selected'>1: Autonomous mode</option>
+                    <option value="2">2: On-Demand mode</option>
+                </select>
+            </div>
+
+            <div>
+                <p class="trackerTitle">SWITCHEN</p>
+                <select name="CommandVal" id="switchenVal">
+                    <option value="0" >0: Disabled</option>
+                    <option value="1" selected='selected'>1: Enable</option>
+                </select>
+            </div>
+
+            <div>
+                <div>
+                    <p class="trackerTitle">HB</p>
+                </div>
+                <input type="text" id="heartbeatVal" value="4">
+                    <p id="tips" class="trackerTitle">*1~65535(Decimal)</p>
+            </div>
+
+            <div>
+                <div>
+                    <p class="trackerTitle">POS</p>
+                </div>
+                <input type="text" id="gpsVal" value="36">
+                    <p id="tips" class="trackerTitle">*0~65535(Decimal)</p>
+            </div>
+            <div>
+                <div>
+                    <p class="trackerTitle">DIV</p>
+                </div>
+                <input type="text" id="divVal" value="0">
+                    <p id="tips" class="trackerTitle">*0~65535(Decimal)</p>
+            </div>
+            <div>
+                <div>
+                    <p class="trackerTitle">Bluetooth Positioning UUID</p>
+                </div>
+                <input type="text" id="uuidVal" value="756269616C73746F6D6372657370696E">
+                    <p id="tips" class="trackerTitle">*0~255(Decimal)</p>
+            </div>
+            <div>
+                <div>
+                    <p class="trackerTitle">G-Sensor Threshold</p>
+                </div>
+                <input type="text" id="gSensorVal" value="10">
+                    <p id="tips" class="trackerTitle">*0~255(Decimal)</p>
+            </div>
+            <div>
+                <div>
+                    <p class="trackerTitle">AssetBeaconReportPeriod</p>
+                </div>
+                <input type="text" id="assetBeaconReportPeriod" value="5">
+                    <p id="tips" class="trackerTitle">*0~255(Decimal)</p>
+            </div>
+            <div>
+                <div>
+                    <p class="trackerTitle">AssetBeaconReceivingDuration</p>
+                </div>
+                <input type="text" id="assetBeaconReceivingDuration" value="3">
+                    <p id="tips" class="trackerTitle">*0~255(Decimal)</p>
+            </div>
+            <div>
+                <div>
+                    <p class="trackerTitle">AssetBeaconReportInterval</p>
+                </div>
+                <input type="text" id="assetBeaconReportInterval" value="3">
+                    <p id="tips" class="trackerTitle">*0~255(Decimal)</p>
+            </div>
+            <div>
+                <div>
+                    <p class="trackerTitle">AssetUUID</p>
+                </div>
+                <input type="text" id="assetUUID" value="F2A52D43E0AB489CB64C4A8300146721">
+                    <p id="tips" class="trackerTitle">*0~255(Decimal)</p>
+            </div>
+
+            <button id="searchConfig" onclick="trackerConfigurationSearch()">Search</button>
+
+            <div>
+                <p class="payload">Data</p>
+                <textarea id="trackerConfiguration"></textarea>
+            </div>
+        </div>
+
+        <div class="SetFriend">
+            <h1 class="secondTitle">Command Configuration</h1>
+            <div>
+                <div>
+                    <p class="CommandTitle trackerTitle">Command</p>
+                </div>
+                <select name="CommandVal" id="CommandVal" onclick="checkCommand()">
+                    <option value="1">0x01: Position Request</option>
+                    <option value="2">0x02: Register Request</option>
+                    <option value="3">0x03: Device Reboot</option>
+                </select>
+            </div><br/>          
+            <button id="searchConfig" onclick="commandConfiguration()">Search</button>
+            <div>
+                <p class="payload">Data</p>
+                <textarea id="friend"></textarea>
+            </div>
+        </div>
+
+
+    </div>
+    <footer class="index_footer">
+        <div class="footer_top">
+            <div class="footer_main">
+                <div class="footer_list">
+                    <span class="headline"><a href="javascript::">SOLUTIONS</a></span>
+                    <hr />
+                    <div class="Alink"><a href="https://www.lansitec.com/Solutions/Project-Procedure.html">Project
+                            Procedure</a></div>
+                    <div class="Alink"><a href="https://www.lansitec.com/Solutions/B-Mobile-Solution.html">B-Mobile®</a>
+                    </div>
+                    <div class="Alink"><a href="https://www.lansitec.com/Solutions/B-Fixed-Solution.html">B-Fixed®</a>
+                    </div>
+                    <div class="Alink"><a href="https://www.lansitec.com/Solutions/Indoor&Outdoor-Tracking.html">Indoor
+                            & Outdoor</a></div>
+                    <div class="Alink"><a href="https://www.lansitec.com/Solutions/Contact-Tracing.html">Contact
+                            Tracing</a></div>
+                </div>
+                <div class="footer_list">
+                    <span class="headline"><a href="javascript::">USE CASES</a></span>
+                    <hr />
+                    <div class="Alink"><a href="https://www.lansitec.com/Solutions/Chemical-Industry.html">Chemical
+                            Industry</a></div>
+                    <div class="Alink"><a href="https://www.lansitec.com/Solutions/Construction-Field.html">Construction
+                            Field</a></div>
+                    <div class="Alink"><a href="https://www.lansitec.com/Solutions/Public-Facilities.html">Public
+                            Facilities</a></div>
+                    <div class="Alink"><a href="https://www.lansitec.com/Solutions/Asset-Tracking.html">Asset
+                            Tracking</a></div>
+                </div>
+                <div class="footer_list">
+                    <span class="headline"><a href="javascript::">COMPANY</a></span>
+                    <hr />
+                    <div class="Alink"><a href="https://www.lansitec.com/Company/About-Us.html">About Us</a></div>
+                    <div class="Alink"><a href="https://www.lansitec.com/Company/Qualifications.html">Qualifications</a>
+                    </div>
+                    <div class="Alink"><a href="https://www.lansitec.com/Company/Contact-Us.html">Contact Us</a></div>
+                    <div class="Alink"><a href="https://www.lansitec.com/Company/Our-Clients.html">Our Clients</a></div>
+                    <div class="Alink"><a href="https://www.lansitec.com/Company/Join-Us.html">Join Us</a></div>
+                </div>
+                <div class="footer_list">
+                    <span class="headline"><a href="javascript::">RESOURCES</a></span>
+                    <hr />
+                    <div class="Alink"><a href="http://iot.lansitec.com:8081/download/index.html?name=payload">Payload
+                            Decoder</a></div>
+                    <div class="Alink"><a href="https://www.lansitec.com/Resource/Goods-Return-Form.html">Goods Return
+                            Form</a></div>
+                    <div class="Alink"><a href="https://www.lansitec.com/index.html">Battery Life Calculator</a></div>
+                    <div class="Alink"><a href="http://iot.lansitec.com:8081/download/index.html?name=DownloadCentre">Download
+                            Centre</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="footer_index">
+                <div class="footer_index_top">
+                    <a href="https://www.lansitec.com/Legal.html">Legal</a>
+                    <a href="https://www.lansitec.com/Privacy.html">Privacy Policy</a>
+                    <a href="https://www.lansitec.com/Warranty.html">Warranty</a>
+                    <a href="https://www.facebook.com/lansitec"><img class="in"
+                            src="https://www.lansitec.com/img/Facebook.png"></a>
+                    <a href="https://twitter.com/Lansitec"><img class="twitter"
+                            src="https://www.lansitec.com/img/twitter.png"></a>
+                    <a href="https://linkedin.com/company/lansitec-information-technology-co-ltd">
+                        <img class="in" src="https://www.lansitec.com/img/in.png"></a>
+                    <a href="https://www.youtube.com/channel/UCaOPTpKZpP9Pq13YKA1fPew">
+                        <img class="in" src="https://www.lansitec.com/img/YT.png"></a>
+                </div>
+                <div class="footer_lala">©All Rights Reserved @2016-2021 <a href="https://www.lansitec.com/">LANSITEC
+                        TECHNOLOGY CO., LTD</a> </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+<script src="./container-tracker-nb.js"></script>

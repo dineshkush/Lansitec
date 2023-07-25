@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" style="background: #F7F9FC;">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no">
+    <title>Lansitec|LoRa</title>
+    <meta name="keywords" content="Sensor" />
+    <meta name="description" content="Lansitec" />
+    <meta property="title" content="Lansitec|LoRa" />
+    <link rel="shortcut icon" href="./img/favicon.ico" />
+    <script src="./jquery.js"></script>
+    <script src="./vue.js"></script>
+    <script>Vue.config.productionTip = false</script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./element.js"></script>
+    <link rel="stylesheet" href="./element.css">
+
+    <script>
+        function readSessionStorage() {
+            var sessionStorages = sessionStorage.getItem("username");
+            if (!sessionStorages) {
+                alert("Please sign in first !");
+                window.location.href = "index.html?name=DownloadCentre"
+            }
+
+        }
+        readSessionStorage()
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .cell, .avatar-uploader {
+            padding-left: 36px !important;
+        }
+
+        .el-button--danger:focus, .el-button--danger:hover {
+            /* background: #f78989;
+            border-color: #f78989;
+            color: #FFF; */
+        }
+
+        .el-button--danger, .el-button {
+            /* color: #FFF; */
+            /* background-color: #F56C6C; */
+            /* border-color: #F56C6C; */
+        }
+
+        .el-button {
+            border: 0;
+            /* color: #FFF; */
+            /* background-color: #F56C6C; */
+            /* border-color: #F56C6C; */
+        } 
+    </style>
+</head>
+
+<body>
+
+    <div id="app" class="type_area" style="width: 100%; height: 100%; background: #F7F9FC;">
+        <div class="centre_box" style="width: 841px; margin: 0 auto;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 20px 0px #D8D8D8; text-align: left;">
+            <table style="margin-top: 80px; border-bottom: 4px solid #0079C3;padding-left: 36px;">
+                <tr style="height: 65px;">
+                    <th style="width: 394px;">NAME</th>
+                    <th style="width: 145px;">TYPE</th>
+                    <th style="width: 160px;">DATE</th>
+                    <th style="width: 100px;">FILE</th>
+                </tr>
+            </table>
+
+            <!-- <table style="padding-left: 36px;margin-top: 23px;border-collapse:collapse;">
+                <tr style="height: 57px;border-bottom: 1px solid #d8d8d8;">
+                    <th style="width: 394px;">FIRMWARE</th>
+                    <th style="width: 145px;"></th>
+                    <th style="width: 160px;"></th>
+                    <th style="width: 100px;"><img src="../../img/resource/uploda.png" style="width: 26px; height: 28px;" alt=""></th>
+                </tr>
+                <tr style="height: 50px;">
+                    <td>Contact tracing badge firmware ver.13.26 RC1</td>
+                    <td>Firmware</td>
+                    <td>2020-11-30</td>
+                    <td><img src="../../img/resource/download.png" style="width: 22px; height: 24px;" alt=""></td>
+                </tr>
+                <tr style="height: 50px;">
+                    <td>Contact tracing badge firmware ver.13.26 RC1</td>
+                    <td>Firmware</td>
+                    <td>2020-11-30</td>
+                    <td><img src="../../img/resource/download.png" style="width: 22px; height: 24px;" alt=""></td>
+                </tr>
+            </table> -->
+
+            <el-table :data="tableData" stripe style="width: 100%;text-align: center;">
+                <el-table-column prop="filename" label="FIRMWARE" width="394">
+                </el-table-column>
+                <el-table-column prop="filetype" label="" width="145">
+                </el-table-column>
+                <el-table-column prop="createtime" label="" width="160">
+                </el-table-column>
+                <el-table-column label="">
+                    <template slot-scope="scope">
+                        <el-button size="medium" @click="downLoadFile(scope.row)"><img src="./img/download.png" style="width: 22px; height: 24px;" alt=""></el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    new Vue({
+        el: '#app',
+
+        components: { app },
+        data: function () {
+            return {
+                tableData: [],
+            }
+        },
+        methods: {
+            downLoadFile(rowFile) {
+                const a = document.createElement('a');
+                a.download = rowFile.filename;
+                a.href = 'http://iot.lansitec.com:14211/user/download?fileName='+ rowFile.filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a)
+            },
+
+            getAllUser() {
+                let username = sessionStorage.getItem("username")
+                var that = this;
+                axios
+                    .get("http://iot.lansitec.com:14211/user/filename", {
+                        params: { 
+                            username: username
+                        }
+                    })
+                    .then(function (data) {
+                        console.log(data)
+                        if (data.data.code != "1001") {
+                            that.$message({
+                                message: data.data.msg,
+                                type: 'error'
+                            });
+                        } else {
+                            that.tableData = data.data.data
+                        }
+                    })
+                    .catch(function (response) { });
+            }
+        },
+        created() {
+            this.getAllUser()
+        }
+    })
+
+</script>

@@ -1,0 +1,907 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('./fonts/Roboto-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('./fonts/Roboto-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SourceSansPro-Regular';
+    src: url('./fonts/SourceSansPro-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SourceSansPro-Italic';
+    src: url('./fonts/SourceSansPro-Italic.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SourceSansPro-Semibold';
+    src: url('./fonts/SourceSansPro-SemiBold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SourceSansPro-Bold';
+    src: url('./fonts/SourceSansPro-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-spacing: 0;
+}
+
+
+
+.title {
+    width: 599px;
+    height: 51px;
+    font-size: 24px;
+    font-family: 'Roboto-Bold';
+    font-weight: bold;
+    line-height: 48px;
+}
+
+.secondTitle {
+    width: 100%;
+    height: 36px;
+    font-size: 21px;
+    font-family: 'SourceSansPro-Semibold';
+    font-weight: 600;
+    color: rgba(51, 51, 51, 1);
+    line-height: 28px;
+    margin-top: 50px;
+}
+
+.buzzer {
+    width: 159px;
+    height: 36px;
+    font-size: 18px;
+    font-family: 'SourceSansPro-Regular';
+    font-weight: 400;
+    color: rgba(51, 51, 51, 1);
+    line-height: 28px;
+    text-align: right;
+    margin-left: -80px;
+}
+
+.bluuetoothTitle {
+    width: 159px;
+    height: 26px;
+    font-size: 18px;
+    font-family: 'SourceSansPro-Regular';
+    font-weight: 400;
+    color: rgba(51, 51, 51, 1);
+    line-height: 7px;
+    text-align: right;
+}
+
+.beaconTitle {
+    width: 241px;
+    height: 26px;
+    font-size: 18px;
+    font-family: 'SourceSansPro-Regular';
+    font-weight: 400;
+    color: rgba(51, 51, 51, 1);
+    line-height: 7px;
+    text-align: right;
+    margin-left: -160px;
+}
+
+.receivingTitle {
+    width: 226px;
+    height: 26px;
+    font-size: 18px;
+    font-family: 'SourceSansPro-Regular';
+    font-weight: 400;
+    color: rgba(51, 51, 51, 1);
+    line-height: 7px;
+    text-align: right;
+    margin-left: -145px;
+}
+
+html,
+body,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li {
+    padding: 0;
+    margin: 0;
+}
+
+hr {
+    margin: 0;
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    z-index: 1000;
+    width: 100%;
+    height: 79px;
+    top: 0px;
+    border-bottom: 1px solid #EEEEEE;
+    position: fixed;
+    /* overflow: hidden; */
+    background: normal;
+    -webkit-transition-property: background-color;
+    -webkit-transition-duration: 0.8s;
+    -webkit-transition-timing-function: ease;
+    background: #FFFFFF;
+    margin-bottom: 79px;
+}
+
+.header {
+    display: flex;
+    list-style: none;
+    float: right;
+    line-height: 95px;
+    text-align: center;
+}
+
+.header li>hr {
+    /* float: left; */
+    width: 0px;
+    border: 0;
+    margin-top: -20px;
+    height: 4px;
+    background: rgb(0, 0, 255, 0);
+    padding-top: -21px;
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+}
+
+.header li:hover>hr {
+    margin-top: -20px;
+    background: #005bea;
+    height: 4px;
+    width: 100%;
+}
+
+.header li:last-child>a {
+    width: 197px;
+    height: 79px;
+    background: #005BEA;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    display: block;
+    -webkit-transition-duration: 0.5s;
+}
+
+.header li:last-child>a:hover {
+    background: #fff;
+    color: #005BEA;
+}
+
+.header>li>a {
+    margin: 0 21px 0 21px;
+    font-size: 14px;
+    font-family: 'SourceSansPro-semiBold';
+    color: #333333;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+.logoBox {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    float: left;
+    width: 321px;
+    height: 80px;
+}
+
+.logoBox>a {
+    height: 80px;
+    display: contents;
+}
+
+.logoBox>a>img {
+    width: 199px;
+    height: 27px;
+}
+
+footer {
+    font-family: 'SourceSansPro-Semibold', 'SourceSansPro';
+    background: #f9f9f9
+}
+
+.footer_top {
+    border-bottom: 1px solid #D8D8D8;
+}
+
+.footer_main {
+    width: 830px;
+    margin: 0 auto;
+    height: 360px;
+}
+
+.footer_list {
+    width: 177px;
+    float: left;
+    padding-top: 81px;
+    padding-bottom: 64px;
+    margin-right: 29px;
+}
+
+.footer_list .headline {
+    font-size: 18px;
+}
+
+.footer_list .headline a {
+    line-height: 18px;
+    margin-bottom: 18px;
+    color: #0079C3;
+    display: block;
+}
+
+.footer_list hr {
+    width: 30px;
+    height: 2px;
+    background: #0079C3;
+    border: 0;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.Alink a {
+    font-size: 16px;
+    color: #333333;
+    line-height: 32px;
+    display: block;
+}
+
+.footer_bottom {
+    height: 119px;
+}
+
+.footer_index {
+    width: 830px;
+    margin: 0 auto;
+}
+
+.footer_index_top a {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 22px;
+    float: left;
+}
+
+.footer_index_top a img {
+    float: left;
+}
+
+
+.footer_index_top {
+    width: 790px;
+    height: 22px;
+    float: left;
+    margin-top: 26px;
+    display: flex;
+    align-items: center;
+}
+
+.langSwitcher {
+    float: right;
+    width: 120px;
+    height: 30px;
+    border: 1px solid #0079C3;
+    background: #0079C3;
+}
+
+.langSwitcher>a {
+    display: block;
+    text-align: center;
+    line-height: 30px;
+    width: 60px;
+    height: 30px;
+}
+
+.footer_index_top>.langSwitcher>a:first-child {
+    margin-right: 0px;
+    color: #fff;
+}
+
+.footer_index_top>.langSwitcher>a:last-child {
+    background: #F6F9FD;
+    margin-right: 0px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.footer_index_top>.langSwitcher>a:last-child:hover {
+    background: #eee;
+}
+
+.Facebook {
+    width: 11px;
+    height: 22px;
+}
+
+.twitter {
+    width: 20px;
+    height: 17px;
+}
+
+.in {
+    width: 19px;
+    height: 19px;
+}
+
+.footer_index_top:nth-child(1) a {
+    margin-right: 39px;
+}
+
+.footer_index_top:nth-child(2) a {
+    margin-right: 31px;
+}
+
+.footer_index_top:nth-child(3) a {
+    margin-right: 31px;
+}
+
+.footer_index_top:nth-child(4) a {
+    margin-right: 45px;
+}
+
+.footer_index_top:nth-child(5) a {
+    margin-right: 37px;
+}
+
+.footer_lala {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 18px;
+
+    width: 490px;
+    height: 22px;
+    float: left;
+    margin-top: 26px;
+}
+
+.footer_lala>a {
+    color: #333333;
+}
+
+/* warranty */
+
+/* navhtml */
+
+#solutionsMenu,
+#productMenu,
+#companyMenu,
+#resourcesMenu {
+    width: 100%;
+    height: 0;
+    background: #fff;
+    position: fixed;
+    top: 78px;
+    left: 0;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    padding-top: 55px;
+}
+
+.secondLevelBody {
+    margin: 0 auto;
+    width: 1000px;
+    height: 258px;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+}
+
+.secondLevelBodyMax {
+    margin: 0 auto;
+    width: 1200px;
+    height: 258px;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.picturePresentation>img {
+    width: 300px;
+    display: block;
+    height: 200px;
+}
+
+.picturePresentation>p {
+    font-size: 14px;
+    font-family: 'SourceSansPro-Regular', 'SourceSansPro';
+    color: #333333;
+    line-height: 44px;
+    display: block;
+}
+
+.picturePresentation {
+    width: 308px;
+    float: left;
+    margin-right: 100px;
+}
+
+.secondLevelImg,
+.secondLevelTitle {
+    width: 250px;
+    float: left;
+    margin-right: 59px;
+}
+
+.secondLevelTitle:last-child,
+.secondLevelImg:last-child {
+    margin-right: 0;
+}
+
+.secondLevelTitle>h4,
+.secondLevelTitleLast {
+    font-size: 14px;
+    font-family: 'SourceSansPro-Semibold', 'SourceSansPro';
+    color: #0079C3;
+    line-height: 18px;
+}
+
+.secondLevelTitle>a {
+    width: 230px;
+    height: 33px;
+    background: #FFFFFF;
+    border: 1px solid #D8D8D8;
+    display: block;
+    padding-left: 20px;
+
+    font-size: 14px;
+    font-family: 'SourceSansPro-Regular', 'SourceSansPro';
+    color: #333333;
+    line-height: 33px;
+    margin-top: 13px;
+    transition: 0.1s;
+}
+
+.secondLevelTitle>a:hover {
+    border: 2px solid #005BEA;
+}
+
+.secondLevelImg>a {
+    width: 225px;
+    height: 60px;
+    background: #FFFFFF;
+    border: 1px solid #D8D8D8;
+    display: block;
+    margin-bottom: 21px;
+
+    font-size: 14px;
+    font-family: 'SourceSansPro-Regular', 'SourceSansPro';
+    color: #333333;
+    line-height: 60px;
+    transition: 0.1s;
+}
+
+.secondLevelImg>a:hover {
+    border: 2px solid #005BEA;
+}
+
+.secondLevelImg>a>img {
+    padding-right: 25px;
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+
+.secondLevelTitleLast {
+    margin-top: 27px;
+}
+
+.secondLevel i {
+    font-style: normal;
+    float: right;
+    margin-right: 40px;
+}
+
+.secondLevelTitle .iRight {
+    font-style: normal;
+    float: right;
+    margin-right: 20px;
+}
+
+.detail {
+    width: 100%;
+    height: 350px;
+    background: linear-gradient(360deg, #17ADDB 0%, #315CA7 100%);
+    margin-top: 79px;
+}
+
+.detailBody {
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.detailBody h1 {
+    width: 350px;
+    height: 158px;
+    font-size: 36px;
+    font-family: 'SourceSansPro-Italic', 'Roboto';
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 48px;
+    letter-spacing: 1px;
+    border-right: 2px #fff solid
+}
+
+.detailBody p {
+    font-size: 18px;
+    font-family: 'SourceSansPro-Regular', 'SourceSansPro';
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 30px;
+    margin-left: 103px;
+}
+
+.solutionTitle {
+    background: #fff;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.titleBarText {
+    width: 800px;
+    margin: 40px auto 0 auto;
+    position: relative;
+}
+
+.titleBarText h1 {
+    display: table;
+
+    background: #FFFFFF;
+    box-shadow: 0rem 2px 15px 0rem #D6D6D6;
+    border-radius: 4px;
+
+    margin: 0 auto;
+    padding-left: 56px;
+    padding-right: 56px;
+    text-align: center;
+
+    font-size: 24px;
+    font-family: 'SourceSansPro-Italic';
+    color: #171717;
+    line-height: 48px;
+}
+
+.titleBarText div {
+    width: 220px;
+    height: 1px;
+    background: #d8d8d8;
+    position: absolute;
+}
+
+.lefthr {
+    left: 0px;
+    top: 25px;
+}
+
+.righthr {
+    right: 0px;
+    top: 25px;
+}
+
+.uplink,
+.downlink {
+    width: 640px;
+    height: max-content;
+    background: #FFFFFF;
+    box-shadow: 0 2px 20px 0 #D6D6D6;
+    border-radius: 5px;
+    border: 1px solid #D8D8D8;
+    margin: 0 auto;
+    padding: 25px 80px 32px 80px;
+    margin-bottom: 40px;
+}
+
+.content>h1,
+.registrContent>h1,
+.secondTitle {
+    font-size: 24px;
+    font-family: "SourceSansPro-Semibold", "SourceSansPro";
+    font-weight: 600;
+    color: #333333;
+    line-height: 28px;
+}
+
+.shockDetectionThreshold,
+.shockPeriod,
+.assetBeaconReportPeriod,
+.bluetoothReceivingDuration,
+.extraAssetBeaconReportInterval,
+.assetUUID,
+.alarmEnable,
+.singleKeyEnable,
+.cfmMsg,
+.hbCount,
+.payload,
+.payloadTitle,
+.msgidTitle,
+.command,
+.result,
+.adr,
+.classmode,
+.dr,
+.mode,
+.CommandTitle,
+.msgidTitle,
+.payloadTitle,
+.powerTitle,
+.lostpointTitle,
+.selfadaptTitle,
+.oneoffTitle,
+.alreportTitle,
+.setFriend,
+.trackerTitle,
+.acknowledgeTitle,
+.beaconTitle {
+    font-size: 16px;
+    font-family: 'SourceSansPro-Semibold', 'SourceSansPro';
+    font-weight: 600;
+    color: #333333;
+    line-height: 28px;
+}
+
+
+#base64Encode,
+#base64Decode,
+#encode,
+#decode,
+#assetBeaconReceivingDuration,
+#assetBeaconReportInterval,
+#shockDetectionThreshold,
+#shockPeriod,
+#assetBeaconReportPeriod,
+#bluetoothReceivingDuration,
+#extraAssetBeaconReportInterval,
+#assetUUID,
+#alarmEnable,
+#singleKeyEnable,
+#cfmMsg,
+#hbCount,
+#switchenVal,
+#divVal,
+#uuidVal,
+#gSensorVal,
+#gnssenVal,
+#posmodeVal,
+#posVal,
+#hbVal,
+#cfmmsgVal,
+#hbcountVal,
+#fallVal,
+#payloadVal,
+#resultVal,
+#gpsVal,
+#dfu_switch,
+#buzzer_vibrator,
+#power_off,
+#heartbeatVal,
+#msgIdVal2,
+#bluetoothReceivingThresholdVal,
+#CommandVal,
+#payloadVal2,
+#msgIdVal3,
+#setFriend,
+#contactWarningDelay,
+#friendSwitch,
+#reportModeSelect,
+#lostpointVal,
+#selfadaptVal,
+#power_OFF {
+    padding-left: 15px;
+
+    width: 594px;
+    height: 40px;
+    background: #F6F9FD;
+    border-radius: 6px;
+    border: 1px solid #D8D8D8;
+
+    font-size: 18px;
+    font-family: 'SourceSansPro-Regular';
+    font-weight: 400;
+    color: #333333;
+    line-height: 40px;
+}
+
+#resultVal {
+    height: 42px;
+}
+
+#registerAcceptance,
+#loraConfiguration,
+#trackerConfiguration,
+#BadgeConfiguration,
+#acknowledge,
+#bluetooth,
+#friend,
+#friendlist,
+#assetBeaconConfiguration,
+#shockDetectionReportConfiguration,
+#uplinkMessage {
+    padding-left: 15px;
+    max-width: 594px;
+    min-width: 594px;
+    height: 200px;
+    background: #F6F9FD;
+    border-radius: 6px;
+    border: 1px solid #D8D8D8;
+
+    font-size: 18px;
+    font-family: 'SourceSansPro-Regular';
+    font-weight: 400;
+    color: #333333;
+    line-height: 24px;
+}
+
+#search {
+    width: 100px;
+    height: 42px;
+    background: #F39422;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: 'SourceSansPro-Semibold';
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 42px;
+    border: 0;
+    position: absolute;
+    margin-right: -5px;
+    left: 511px;
+}
+
+.content {
+    width: 640px;
+    padding-top: 23px;
+    position: relative;
+}
+
+.registrContent {
+    width: 640px;
+    margin-top: 15px;
+    position: relative;
+}
+
+#adrVal,
+#claamodeVal,
+#datarateVal,
+#powerVal,
+#modeVal,
+#buzzerAndVibratorVal,
+#bluetoothTransmitPowerVal,
+#beaconFunctionVal,
+#oneoffVal,
+#alreportVal {
+    width: 245px;
+    height: 40px;
+    background: #F6F9FD;
+    border-radius: 6px;
+    border: 1px solid #D8D8D8;
+    padding-left: 15px;
+}
+
+
+#CommandVal,
+#contactWarningDelay,
+#friendSwitch,
+#reportModeSelect,
+#dfu_switch,
+#buzzer_vibrator,
+#power_off,
+#buzzerAndVibratorVal,
+#bluetoothTransmitPowerVal,
+#beaconFunctionVal,
+#power_OFF,
+#lostpointVal,
+#selfadaptVal {
+    width: 611px;
+}
+
+#powerVal {
+    width: 230px;
+}
+
+.secondLeft {
+    display: inline-block;
+}
+
+.secondRight {
+    float: right;
+}
+
+#tips {
+    height: 36px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(234, 15, 15, 1);
+    line-height: 28px;
+}
+
+#searchConfig {
+    width: 100px;
+    height: 42px;
+    background: #F39422;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: 'SourceSansPro-Semibold';
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 42px;
+    border: 0;
+    margin-bottom: 10px
+}
+
+.loraContant {
+    width: 611px;
+}
+
+#payloadVal2,
+#reportModeSelect,
+#msgIdVal2,
+#bluetoothReceivingThresholdVal,
+.selfadaptVal,
+.msgIdVal3 {
+    margin-bottom: 20px;
+}
+
+input:focus {
+    outline: none;
+}
+
+select:focus {
+    outline: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.tips {
+    font-size: 13px;
+    color: red;
+}
+
+.bottomBtn {
+    display: block;
+}
+
+.trackerContent {
+    width: 611px;
+}
