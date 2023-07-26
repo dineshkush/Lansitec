@@ -52,7 +52,7 @@ crossorigin="anonymous"></script>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="right_sidebar d-flex align-items-center">
+                    <div class="left_sidebar d-flex align-items-center">
                         <div id="app" class="form_box">
                             <div class="bg-login">
                                 <div class="middle-box loginbox loginscreen bg-white loginPd">
@@ -357,22 +357,22 @@ crossorigin="anonymous"></script>
     } else if (urlName == 'containerTrackerNB') {
         document.getElementById('h1').innerHTML = "Container Tracker NB Payload Decoder"
     }
-    window.onresize = () => {
-        let designSize = 1440; // 设计图尺寸
-        let html = document.documentElement;
-        let wW = html.clientWidth;// 窗口宽度
-        let rem = wW * 100 / designSize;
-        document.documentElement.style.fontSize = rem + 'px';
-    }
+    // window.onresize = () => {
+    //     let designSize = 1440; // 设计图尺寸
+    //     let html = document.documentElement;
+    //     let wW = html.clientWidth;// 窗口宽度
+    //     let rem = wW * 100 / designSize;
+    //     document.documentElement.style.fontSize = rem + 'px';
+    // }
 
-    function hhh() {
-        let designSize = 1440; // 设计图尺寸
-        let html = document.documentElement;
-        let wW = html.clientWidth;// 窗口宽度
-        let rem = wW * 100 / designSize;
-        document.documentElement.style.fontSize = rem + 'px';
-        document.getElementById('html').style.display = 'block';
-    }
+    // function hhh() {
+    //     let designSize = 1440; // 设计图尺寸
+    //     let html = document.documentElement;
+    //     let wW = html.clientWidth;// 窗口宽度
+    //     let rem = wW * 100 / designSize;
+    //     document.documentElement.style.fontSize = rem + 'px';
+    //     document.getElementById('html').style.display = 'block';
+    // }
 
     hhh()
 </script>
