@@ -32,8 +32,9 @@ p {
 	height: 100vh !important;
 }
 
-.login_form .right_sidebar {
+.login_form .left_sidebar {
 	height: 100vh;
+	padding: 0px 60px;
 }
 .login_form .img_col {
     background-repeat: no-repeat;
@@ -43,7 +44,7 @@ p {
     -moz-background-size: cover;
     -o-background-size: cover;
 }
-.login_form .left_sidebar img {
+.login_form .right_sidebar img {
 	width: 380px;
 	margin-bottom: 10px;
 }
@@ -97,4 +98,7 @@ p {
 .form_btn button:hover {
 	background-image: linear-gradient(to right, #0079c3, #42bbe8);
 	color: #fff !important;
+}
+.login_form .right_sidebar {
+	padding: 40px 35px;
 }
